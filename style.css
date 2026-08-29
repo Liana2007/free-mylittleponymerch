@@ -1,21 +1,826 @@
+/* =====================================================
+   GENERAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
     margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    font-family: "Caveat", cursive;
+
+    color: #234d91;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   PAGE SYSTEM
+===================================================== */
+
+.page {
+    min-height: 100vh;
+    width: 100%;
+
+    position: relative;
+}
+
+
+/* =====================================================
+   BLUE / CREAM CHECKERBOARD BACKGROUND
+===================================================== */
+
+.home-page,
+.letter-page,
+.photos-page {
+
+    background-image: url("images/background.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+}
+/* =====================================================
+   HOME PAGE
+===================================================== */
+
+.home-page {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+
+    overflow: hidden;
+}
+
+
+.home-content {
+
+    width: min(90%, 800px);
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.home-page h1 {
+
+    margin: 0 0 10px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: clamp(40px, 8vw, 72px);
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    color: #f8f8fa;
+
+    text-shadow:
+        2px 2px 0 #4e7bee;
+}
+
+
+.subtitle {
+
+    margin: 10px 0 35px;
+
+    font-size: clamp(24px, 3vw, 32px);
+
+    color: #f7f8f9;
+}
+
+
+/* =====================================================
+   GIFT
+===================================================== */
+
+.gift-container {
+
+    position: relative;
+
+    width: 230px;
+    height: 230px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+
+.gift-container:hover {
+
+    transform: translateY(-8px) rotate(-2deg);
+}
+
+
+/* =====================================================
+   GIFT BOX
+===================================================== */
+
+.gift {
+
+    position: relative;
+
+    width: 150px;
+    height: 135px;
+}
+
+
+/* BOX */
+
+.gift-box {
+
+    position: absolute;
+
+    bottom: 0;
+    left: 15px;
+
+    width: 120px;
+    height: 100px;
+
+    background: #fff5df;
+
+    border: 4px solid #021d46;
+
+    border-radius: 4px;
+
+    box-shadow:
+        5px 7px 0 rgba(49, 95, 165, 0.15);
+}
+
+
+/* LID */
+
+.gift-lid {
+
+    position: absolute;
+
+    top: 20px;
+    left: 5px;
+
+    width: 140px;
+    height: 32px;
+
+    background: #fff5df;
+
+    border: 4px solid #05275b;
+
+    border-radius: 5px;
+
+    z-index: 3;
+}
+
+
+/* HORIZONTAL RIBBON */
+
+.ribbon-horizontal {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 18px;
+    height: 100%;
+
+    background: #02265c;
+}
+
+
+/* VERTICAL RIBBON */
+
+.ribbon-vertical {
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 18px;
+    height: 100%;
+
+    background: #02265c;
+}
+
+
+/* =====================================================
+   BOW
+===================================================== */
+
+.bow {
+
+    position: absolute;
+
+    top: -25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 70px;
+    height: 40px;
+
+    z-index: 5;
+}
+
+
+.bow span {
+
+    position: absolute;
+
+    width: 42px;
+    height: 30px;
+
+    background: #02265c;
+
+    border: 3px solid #02265c;
+
+    top: 5px;
+}
+
+
+.bow span:first-child {
+
+    left: 0;
+
+    border-radius: 70% 20% 70% 20%;
+
+    transform: rotate(-25deg);
+}
+
+
+.bow span:last-child {
+
+    right: 0;
+
+    border-radius: 20% 70% 20% 70%;
+
+    transform: rotate(25deg);
+}
+
+
+.bow::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    background: #02265c;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 12px;
+
+    transform: translateX(-50%);
+}
+
+
+/* HEART ON GIFT */
+
+.small-heart {
+
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    color: #315fa5;
+}
+
+
+/* =====================================================
+   CLICK TEXT
+===================================================== */
+
+.click-text {
+
+    margin: 15px 0 0;
+
+    font-size: 27px;
+
+    color: #f4f5f8;
+}
+
+
+/* =====================================================
+   LETTER PAGE
+===================================================== */
+
+.letter-page {
+
+    display: none;
+
+    padding: 70px 20px;
+
+    min-height: 100vh;
+}
+
+
+/* PAPER */
+
+.letter-paper {
+
+    position: relative;
+
+    width: min(90%, 760px);
+
+    margin: auto;
+
+    padding: 65px 70px;
+
+    background: #fffdf5;
+
+    border: 5px solid #315fa5;
+
+    border-radius: 5px;
+
+    box-shadow:
+        10px 12px 0 rgba(49, 95, 165, 0.15);
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   LETTER BACK BUTTON
+===================================================== */
+
+.back-button {
+
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    border: none;
+
+    background: none;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 25px;
+
+    color: #f5f7fa;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+
+.back-button:hover {
+
+    transform: translateX(-4px);
+}
+
+
+/* =====================================================
+   LETTER TITLE
+===================================================== */
+
+.letter-paper h2 {
+
+    margin: 0 0 35px;
+
+    text-align: center;
+
+    font-size: 48px;
+
+    color: #315fa5;
+}
+
+
+/* =====================================================
+   LETTER TEXT
+===================================================== */
+
+.letter-paper p {
+
+    margin: 0 0 22px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 25px;
+
+    line-height: 1.55;
+
+    color: #315fa5;
+}
+
+
+/* LOVE */
+
+.letter-paper .love {
+
+    margin-top: 35px;
+
+    text-align: right;
+
+    font-size: 32px;
+}
+
+
+/* BOOBIES */
+
+.boobies {
+
+    text-align: right;
+
+    font-size: 22px !important;
+}
+
+
+/* =====================================================
+   NEXT BUTTON
+===================================================== */
+
+.next-button {
+
+    display: block;
+
+    margin: 45px auto 0;
+
+    padding: 10px 22px;
+
+    background: #fff5df;
+
+    border: 3px solid #315fa5;
+
+    border-radius: 5px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 25px;
+
+    color: #315fa5;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.next-button:hover {
+
+    transform: translateY(-3px);
+
+    background: #dcecff;
+}
+
+
+/* =====================================================
+   PHOTOS PAGE
+===================================================== */
+
+.photos-page {
+
+    display: none;
+
     min-height: 100vh;
 
-    background-image: url("images/download.jpe");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    padding: 70px 30px;
+}
+
+
+.photos-container {
+
+    position: relative;
+
+    width: min(1000px, 95%);
+
+    margin: auto;
 
     text-align: center;
 }
 
-h1 {
-    font-size: 80px;
+
+/* =====================================================
+   PHOTO TITLE
+===================================================== */
+
+.photos-container h2 {
+
+    margin: 20px 0 0;
+
+    font-size: clamp(55px, 7vw, 80px);
+
+    color: #f0f3f7;
 }
 
-.envelope {
-    font-size: 120px;
-    margin-top: 100px;
-    cursor: pointer;
+
+.photos-subtitle {
+
+    margin: 0 0 50px;
+
+    font-size: 27px;
+
+    color: #f3f4f5;
+}
+
+
+/* =====================================================
+   PHOTO WALL
+===================================================== */
+
+.photo-wall {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 620px;
+}
+
+
+/* =====================================================
+   PHOTO CARD
+===================================================== */
+
+.photo-card {
+
+    position: absolute;
+
+    width: 260px;
+
+    padding: 13px 13px 35px;
+
+    background: #fffdf5;
+
+    border: 5px solid #315fa5;
+
+    box-shadow:
+        5px 8px 0 rgba(49, 95, 165, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        z-index 0s;
+}
+
+
+.photo-card img {
+
+    display: block;
+
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    border: 2px solid #315fa5;
+}
+
+
+/* =====================================================
+   RANDOM PHOTO POSITIONS
+===================================================== */
+
+.photo-one {
+
+    left: 8%;
+    top: 70px;
+
+    transform: rotate(-6deg);
+}
+
+
+.photo-two {
+
+    left: 50%;
+    top: 20px;
+
+    transform: translateX(-50%) rotate(3deg);
+
+    z-index: 2;
+}
+
+
+.photo-three {
+
+    right: 8%;
+    top: 110px;
+
+    transform: rotate(7deg);
+}
+
+
+.photo-card:hover {
+
+    transform: rotate(0deg) scale(1.06);
+
+    z-index: 10;
+}
+
+
+/* =====================================================
+   TAPE
+===================================================== */
+
+.tape {
+
+    position: absolute;
+
+    top: -17px;
+    left: 50%;
+
+    transform: translateX(-50%) rotate(-2deg);
+
+    width: 90px;
+    height: 32px;
+
+    background: rgba(169, 201, 237, 0.85);
+
+    border: 2px solid rgba(49, 95, 165, 0.25);
+
+    z-index: 5;
+}
+
+
+/* =====================================================
+   END MESSAGE
+===================================================== */
+
+.end-message {
+
+    margin-top: 20px;
+
+    font-size: 32px;
+
+    color: #f3f3f4;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+
+    /* HOME */
+
+    .home-page {
+
+        padding: 40px 15px;
+    }
+
+
+    .home-page h1 {
+
+        font-size: 52px;
+    }
+
+
+    .subtitle {
+
+        font-size: 25px;
+    }
+
+
+    /* GIFT */
+
+    .gift-container {
+
+        transform: scale(0.9);
+    }
+
+
+    /* LETTER */
+
+    .letter-page {
+
+        padding: 45px 15px;
+    }
+
+
+    .letter-paper {
+
+        width: 95%;
+
+        padding: 60px 25px 35px;
+    }
+
+
+    .letter-paper h2 {
+
+        font-size: 38px;
+    }
+
+
+    .letter-paper p {
+
+        font-size: 22px;
+    }
+
+
+    /* PHOTOS */
+
+    .photos-page {
+
+        padding: 45px 10px;
+    }
+
+
+    .photo-wall {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 35px;
+
+        min-height: auto;
+    }
+
+
+    .photo-card {
+
+        position: relative;
+
+        left: auto;
+        right: auto;
+        top: auto;
+
+        width: min(85vw, 300px);
+
+        transform: rotate(0deg) !important;
+    }
+
+
+    .photo-card:nth-child(1) {
+
+        transform: rotate(-4deg) !important;
+    }
+
+
+    .photo-card:nth-child(2) {
+
+        transform: rotate(3deg) !important;
+    }
+
+
+    .photo-card:nth-child(3) {
+
+        transform: rotate(-3deg) !important;
+    }
+
+
+    .photo-card img {
+
+        height: 250px;
+    }
+
+
+    .end-message {
+
+        margin-top: 45px;
+
+        font-size: 27px;
+    }
 }
